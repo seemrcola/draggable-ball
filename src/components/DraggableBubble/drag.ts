@@ -1,4 +1,5 @@
 import { createApp, onMounted, onUnmounted, ref } from 'vue'
+import type { Ref } from 'vue'
 import type { IRect, TDirection, TLineFunc } from './types'
 import Border from './Border.vue'
 import Shadow from './Shadow.vue'

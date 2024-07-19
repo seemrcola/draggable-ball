@@ -8,7 +8,7 @@ interface IRect {
     height: number
 }
 
-export {
+export type {
     TLineFunc,
     TDirection,
     IRect,
