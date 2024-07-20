@@ -3,6 +3,7 @@ import type { Ref } from 'vue'
 import type { IRect, TDirection, TLineFunc } from './types'
 import Border from './Border.vue'
 import Shadow from './Shadow.vue'
+import patchCss from './patch.module.css'
 
 interface Config {
     indicatorSize: number
@@ -82,6 +83,7 @@ export function DragBubble(domQuery: string, config: Config) {
 
         document.addEventListener('mousemove', drag)
         document.addEventListener('mouseup', endDrag)
+        document.body.classList.add(patchCss['patch-body-overflow-hidden'])
 
         renderBorder()
         const d = getDirection({ x: event.pageX, y: event.pageY })
@@ -130,6 +132,7 @@ export function DragBubble(domQuery: string, config: Config) {
         setTimeout(() => {
             document.removeEventListener('mousemove', drag)
             document.removeEventListener('mouseup', endDrag)
+            document.body.classList.remove(patchCss['patch-body-overflow-hidden'])
             borderTemplate?.unmount()
             shadowTemplate?.unmount()
             borderBox?.remove()
