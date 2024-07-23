@@ -11,19 +11,19 @@
 
 <style scoped>
 .fade-in-out {
-    opacity: 0; /* 初始状态为透明 */
-    animation: fadeInOut 1s ease-in-out forwards; /* 应用动画 */
+    opacity: 0; 
+    animation: fadeInOut 1s ease-in-out forwards; 
 }
 
 @keyframes fadeInOut {
     0% {
-        opacity: 0; /* 开始时完全透明 */
+        opacity: 0; 
     }
     50% {
-        opacity: 0.7; /* 中间变为完全不透明 */
+        opacity: 0.7; 
     }
     100% {
-        opacity: 1; /* 结束时再次变为完全透明 */
+        opacity: 1; 
     }
 }
 </style>
