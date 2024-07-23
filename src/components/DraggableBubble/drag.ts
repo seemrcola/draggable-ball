@@ -65,7 +65,7 @@ export function DragBubble(domQuery: string, config: Config) {
             return
         if (isDragging)
             return
-
+    
         isDragging = true
 
         const { pageX, pageY } = event
@@ -123,15 +123,15 @@ export function DragBubble(domQuery: string, config: Config) {
         const el = dom.value
         if (!el)
             return
-
         isDragging = false
 
         el.style.cursor = 'default'
         el.style.userSelect = 'auto'
 
+        document.removeEventListener('mousemove', drag)
+        document.removeEventListener('mouseup', endDrag)
+
         setTimeout(() => {
-            document.removeEventListener('mousemove', drag)
-            document.removeEventListener('mouseup', endDrag)
             document.body.classList.remove(patchCss['patch-body-overflow-hidden'])
             borderTemplate?.unmount()
             shadowTemplate?.unmount()
