@@ -2,7 +2,7 @@
     <div
         class="
             fade-in-out
-            fixed z-2147483646 left-0 top-0 w-[100vw] h-[100vh]
+            fixed left-0 top-0 w-[100vw] h-[100vh]
             box-border
             border-[8px] border-indigo-600 border-solid
         "

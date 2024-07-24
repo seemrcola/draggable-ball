@@ -22,7 +22,7 @@ function handleClick() {
     <Teleport to="body">
         <div
             :id="bubbleId"
-            class="h-16 w-16 shadow-lg fixed z-2147483647 right-0 top-[80%] border rounded-full"
+            class="h-16 w-16 shadow-lg fixed right-0 top-[80%] border rounded-full"
             @click="handleClick"
         >
             <div
