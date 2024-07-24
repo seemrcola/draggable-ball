@@ -1,16 +1,30 @@
 <script setup lang='ts'>
 import { DragBubble } from './drag'
 
-const indicatorSize = 12
+const emits = defineEmits(['bubbleClick'])
 
-const dragBubble = DragBubble('.bubble', {
+const indicatorSize = 12
+const bubbleId = `bubbleId${Math.random().toString(36).substring(2, 9)}`
+
+const dragBubble = DragBubble(`#${bubbleId}`, {
     indicatorSize,
 })
+
+function handleClick() {
+    // 当非拖动状态时，点击触发 bubbleClick 事件
+    if (dragBubble.getClickStatus()) {
+        emits('bubbleClick')
+    }
+}
 </script>
 
 <template>
     <Teleport to="body">
-        <div class="bubble h-16 w-16 shadow-lg absolute rounded-full right-0 top-[80%] border">
+        <div
+            :id="bubbleId"
+            class="h-16 w-16 shadow-lg fixed z-2147483647 right-0 top-[80%] border rounded-full"
+            @click="handleClick"
+        >
             <div
                 v-if="dragBubble.shadowDirection.value === 'top'"
                 :style="{ width: `${indicatorSize}px`, height: `${indicatorSize}px` }"

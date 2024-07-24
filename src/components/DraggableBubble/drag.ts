@@ -12,7 +12,8 @@ interface Config {
 export function DragBubble(domQuery: string, config: Config) {
     const dom = ref<HTMLDivElement | null>(null)
     const lastCoord = { x: 0, y: 0 }
-    let isDragging = false
+    let isDragging = false // 是否正在拖动
+    let noClick = false // 是否阻止点击事件
     let borderTemplate: any
     let shadowTemplate: any
     let borderBox: any
@@ -65,8 +66,9 @@ export function DragBubble(domQuery: string, config: Config) {
             return
         if (isDragging)
             return
-    
+
         isDragging = true
+        noClick = false
 
         const { pageX, pageY } = event
 
@@ -98,6 +100,8 @@ export function DragBubble(domQuery: string, config: Config) {
             return
         if (!isDragging)
             return
+
+        noClick = true
 
         const { pageX, pageY } = event
         const deltaX = pageX - lastCoord.x
@@ -149,7 +153,11 @@ export function DragBubble(domQuery: string, config: Config) {
         borderTemplate = createApp(Border)
         borderBox = document.createElement('div')
         borderTemplate.mount(borderBox)
-        document.body.appendChild(borderBox)
+        // 插入到dom前面
+        const el = dom.value
+        if (!el)
+            return
+        el.parentNode?.insertBefore(borderBox, el)
     }
 
     function renderShadow(direction: Ref<TDirection>, rect: Ref<IRect>) {
@@ -242,7 +250,17 @@ export function DragBubble(domQuery: string, config: Config) {
         return (x: number) => k * x + b
     }
 
+    function getDragStatus() {
+        return isDragging
+    }
+
+    function getClickStatus() {
+        return !noClick
+    }
+
     return {
         shadowDirection,
+        getClickStatus,
+        getDragStatus,
     }
 }
