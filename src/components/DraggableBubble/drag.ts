@@ -153,11 +153,7 @@ export function DragBubble(domQuery: string, config: Config) {
         borderTemplate = createApp(Border)
         borderBox = document.createElement('div')
         borderTemplate.mount(borderBox)
-        // 插入到dom前面
-        const el = dom.value
-        if (!el)
-            return
-        el.parentNode?.insertBefore(borderBox, el)
+        document.body.appendChild(borderBox)
     }
 
     function renderShadow(direction: Ref<TDirection>, rect: Ref<IRect>) {

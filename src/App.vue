@@ -3,7 +3,7 @@ import DraggableBall from './components/DraggableBubble/index.vue'
 
 function bubbleClick(event: MouseEvent) {
     console.log(event, 'clicked')
-    alert('点击成功')
+    // alert('点击成功')
 }
 
 console.log('hello world')
