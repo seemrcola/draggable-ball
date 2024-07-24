@@ -33,18 +33,18 @@ watch(
 <template>
     <div
         v-if="props.direction.value === 'left'" name="shadow-left"
-        class="absolute z-9999 w-[8px] h-[32px] top-0 left-0 bg-orange-400 rounded-[2px]"
+        class="absolute z-[2147483647] w-[8px] h-[32px] top-0 left-0 bg-orange-400 rounded-[2px]"
     />
     <div
         v-if="props.direction.value === 'right'" name="shadow-right"
-        class="absolute z-9999 w-[8px] h-[32px] top-0 right-0 bg-orange-400 rounded-[2px]"
+        class="absolute z-[2147483647] w-[8px] h-[32px] top-0 right-0 bg-orange-400 rounded-[2px]"
     />
     <div
         v-if="props.direction.value === 'top'" name="shadow-top"
-        class="absolute z-9999 w-[32px] h-[8px] top-0 left-0 bg-orange-400 rounded-[2px]"
+        class="absolute z-[2147483647] w-[32px] h-[8px] top-0 left-0 bg-orange-400 rounded-[2px]"
     />
     <div
         v-if="props.direction.value === 'bottom'" name="shadow-bottom"
-        class="absolute z-9999 w-[32px] h-[8px] bottom-0 left-0 bg-orange-400 rounded-[2px]"
+        class="absolute z-[2147483647] w-[32px] h-[8px] bottom-0 left-0 bg-orange-400 rounded-[2px]"
     />
 </template>
